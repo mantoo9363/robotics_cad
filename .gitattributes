@@ -1,0 +1,4 @@
+# Shell scripts and git hooks must stay LF so they run on Linux CI and in Git Bash.
+*.sh              text eol=lf
+.githooks/*       text eol=lf
+scripts/security/* text eol=lf

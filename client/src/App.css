@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/*
+ * Same leak risk as index.css (see the comment there) — body/html/#root here
+ * would apply document-wide, not just to this embed's subtree, once this
+ * ships inside the host dashboard. `overflow: hidden` on body/html would be
+ * the worst offender: it would silently kill page scrolling site-wide the
+ * moment this component mounted anywhere. Scoped to .cad-studio-root only.
+ */
+.cad-studio-root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --accent: #4361ee;
+  --accent-glow: rgba(67, 97, 238, 0.4);
+  --delete: #ef4444;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --panel-width: 340px;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  font-family: "Outfit", sans-serif;
+  color: var(--text-main);
+}
+
+/* Custom Scrollbar Styles for Right Panel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Slider Thumb Styles (Hard to style natively in CSS with utility classes) */
+.rp-dim-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  outline: none;
+}
+
+.rp-dim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4361ee;
+  border: 2px solid #1e293b;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(67, 97, 238, 0.4);
+  transition: transform 0.15s ease;
+}
+
+.rp-dim-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.rp-dim-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4361ee;
+  border: 2px solid #1e293b;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium Right Panel Component Styles */
+.rp-prop-block {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rp-prop-block:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.rp-prop-label {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.rp-btn-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rp-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.rp-primary-btn:hover {
+  background-color: #3b52e0; /* slightly darker accent */
+}
+
+.rp-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+}
+
+.rp-secondary-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rp-secondary-btn.active {
+  background-color: rgba(67, 97, 238, 0.15);
+  border-color: rgba(67, 97, 238, 0.5);
+  color: #a5b4fc;
+}
+
+.rp-secondary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

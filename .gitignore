@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+
+# Environment variables
+!.env.example
+!**/.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+**/coverage/
+
+# Cache
+.cache/
+.parcel-cache/
+.vite/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+config.bat
+
+# Security incident 2026-09 — raw malware payload kept as local evidence only, never commit
+security/incident-2026-09/*.malicious
